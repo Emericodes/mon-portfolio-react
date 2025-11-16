@@ -1,20 +1,25 @@
-import { Routes, Route } from 'react-router-dom'
-import HomePage from './pages/HomePage'
-import './App.css' // On peut le garder pour le style global pour l'instant
+import { useState } from "react";
+import HomeSection from "./sections/HomeSection";
+import Header, { type SectionId } from "./components/Header";
 
 function App() {
+  const [activeSection, setActiveSection] = useState<SectionId>("home");
+
+  const handleNavigate = (section: SectionId) => {
+      setActiveSection(section);
+    };
   return (
     <>
-      
+      <div className="nav-container">
+        <Header activeSection={activeSection} onNavigate={handleNavigate} />
+      </div>
       <main>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-        </Routes>
+        <section id="home">
+          <HomeSection />
+        </section>
       </main>
-      
     </>
-  )
+  );
 }
 
-export default App
-
+export default App;
