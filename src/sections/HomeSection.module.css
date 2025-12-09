@@ -1,0 +1,89 @@
+.heroSection {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  overflow: hidden;  
+}
+
+.backgroundWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.backgroundImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  object-position: center;
+}
+
+.profileImage{
+  width: 250px;
+  height: auto;
+  border-radius: 50px;
+  flex-shrink: 0;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(18, 18, 18, 0.4),
+    rgba(18, 18, 18, 0.8)
+  );
+  backdrop-filter: blur(2px); 
+}
+
+.contentContainer {
+  position: relative; 
+  z-index: 1; 
+  text-align: start;
+  padding: 0 1rem;
+  max-width: 800px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.textWrapper {
+  flex-basis: 60%;
+}
+.title {
+  
+  font-size: var(--font-size-h1);
+  margin-bottom: 1.5rem;
+  animation: fadeUp 0.8s ease-out forwards;
+}
+
+.subtitle {
+  font-size: var(--font-size-h2);
+  color: #ccc; 
+  margin-bottom: 2rem;
+  animation: fadeUp 0.8s ease-out 0.2s forwards; 
+  opacity: 0; 
+}
+.highlight {
+  color: var(--color-accent-light);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

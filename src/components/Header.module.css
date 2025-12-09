@@ -1,35 +1,40 @@
 .headerWrapper {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding: 0;
 }
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: min(90vw, 1400px);
-  margin-left: auto;
-  margin-right: auto;
+  left: 50%;
+  transform: translateX(-50%);
   border-radius: 25px;
   padding: 0 2rem;
   height: var(--header-height);
   background-color: var(--color-bg-header);
   border-bottom: 1px solid var(--color-border-header);
   backdrop-filter: blur(10px);
-  position: sticky;
-  top: 1rem; 
+  position: fixed;
+  top: 1rem;
   z-index: 1000;
 }
 .logoContainer {
+  /* MODIFICATION: Assure que l'alignement vertical est centré et gère l'espacement */
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  font-size: 1.5rem;
-  font-weight: 600;
+  gap: 0.75rem; /* Ajusté l'espacement entre l'image et le texte (était déjà là, mais essentiel) */
   color: var(--color-text-primary);
   cursor: pointer;
   transition: color var(--transition-fast);
   text-decoration: none;
   border-radius: 4px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  font: inherit;
+  text-align: left;
+  font-size: 1.5rem; /* Taille de base pour le conteneur */
+  font-weight: 600;
 }
 .logoContainer:focus-visible {
   outline: var(--focus-outline);
@@ -38,7 +43,7 @@
 .logoImg {
   width: 50px;
   height: 50px;
-  border-radius:15px;
+  border-radius: 15px;
   object-fit: contain;
   filter: drop-shadow(0 2px 4px rgba(255, 255, 255, 0.692));
   transition: all var(--transition-fast);
@@ -50,7 +55,15 @@
   display: flex;
   gap: 1rem;
 }
-
+.siteName {
+  /* MODIFICATION: Style spécifique pour le nom du site */
+  color: var(--color-text-primary);
+  font-size: 1.5rem; /* Une taille spécifique et plus lisible */
+  font-weight: 700; /* Rendu plus proéminent */
+  letter-spacing: 0.5px; /* Petit espacement pour un look soigné */
+  margin-left: 0.5rem; /* Ajout d'un petit espacement supplémentaire si nécessaire, mais le gap de .logoContainer devrait suffire */
+  line-height: 1.2; /* Améliore l'apparence */
+}
 .navLink {
   display: flex;
   align-items: center;

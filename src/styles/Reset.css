@@ -1,6 +1,7 @@
 /* ============================================
    RESET CSS MODERNE ET COMPLET
    Basé sur les best practices 2024 - 2025
+   Correction: Architecture "App-Like" (No Double Scroll)
    ============================================ */
 
 /* ===== Box Model universel ===== */
@@ -12,16 +13,17 @@
     box-sizing: border-box;
 }
 
-/* ===== HTML et Body - FIX BANDE NOIRE ===== */
-/* ===== FIX DOUBLE SCROLLBAR + BANDE NOIRE ===== */
+/* ===== HTML et Body - CONFIGURATION APP-LIKE ===== */
 html {
-    margin: 0 !important;
-    padding: 0 !important;
+    margin: 0;
+    padding: 0;
     border: 0;
-    height: 100%;
+    /* On force la hauteur pour que les pourcentages enfants fonctionnent */
+    height: 100%; 
+    width: 100%;
     
-    /* CRITICAL : Empêche le scroll sur html */
-    overflow: hidden;
+    /* CRITICAL : On tue le scroll natif du navigateur ici */
+    overflow: hidden; 
     
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
@@ -30,50 +32,49 @@ html {
 }
 
 body {
-    margin: 0 !important;
-    padding: 0 !important;
+    margin: 0;
+    padding: 0;
     border: 0;
     
-    /* CRITICAL : Seul body doit scroller */
-    height: 100vh;
-    overflow-y: auto;
-    overflow-x: hidden;
+    /* CRITICAL : Le body prend tout l'écran mais NE SCROLLE PAS.
+       C'est 'main' (dans global.css) qui s'en chargera. */
+    height: 100%;
+    width: 100%;
+    overflow: hidden; 
     
     line-height: 1.6;
+    background-color: var(--color-bg-primary, #121212); /* Fallback si variable non chargée */
 }
 
-/* ===== Fix pour #root ===== */
+/* ===== Fix pour #root (React) ===== */
 #root {
-    margin: 0 !important;
-    padding: 0 !important;
+    margin: 0;
+    padding: 0;
     
-    /* CRITICAL : Ne pas forcer de hauteur */
-    min-height: 100vh;
+    /* Le conteneur React doit remplir le body sans déborder */
+    height: 100%;
     width: 100%;
     
-    /* Empêche le dépassement */
-    overflow-x: hidden;
+    /* Isole le contexte de formatage */
+    isolation: isolate; 
+    overflow: hidden;
 }
 
 
 /* ===== Typographie ===== */
 h1, h2, h3, h4, h5, h6 {
-    /* Reset des tailles (seront définies dans global.css) */
     font-size: inherit;
     font-weight: inherit;
     line-height: 1.2;
 }
 
 p, h1, h2, h3, h4, h5, h6 {
-    /* Empêche les mots orphelins (améliore la lecture) */
     overflow-wrap: break-word;
 }
 
 /* ===== Listes ===== */
 ul, ol {
     list-style: none;
-    padding: 0;
-    margin: 0; 
 }
 
 /* ===== Liens ===== */
@@ -98,10 +99,7 @@ button:disabled {
 }
 
 /* ===== Formulaires ===== */
-input,
-textarea,
-select,
-button {
+input, textarea, select, button {
     font-family: inherit;
     font-size: inherit;
     color: inherit;
@@ -109,48 +107,24 @@ button {
     border: none;
 }
 
-input:focus,
-textarea:focus,
-select:focus,
-button:focus {
+input:focus, textarea:focus, select:focus, button:focus {
     outline: none;
 }
 
-/* Reset de l'apparence par défaut des inputs */
+/* Reset inputs specifiques */
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
-input[type="search"]::-webkit-search-results-decoration {
-    display: none;
-}
+input[type="search"]::-webkit-search-results-decoration { display: none; }
 
-/* Reset des spinners des inputs number */
 input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-/* Reset de l'apparence des checkbox et radio */
-input[type="checkbox"],
-input[type="radio"] {
-    width: auto;
-}
+input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
 
 /* ===== Images et Médias ===== */
-img,
-picture,
-video,
-canvas,
-svg {
+img, picture, video, canvas, svg {
     display: block;
     max-width: 100%;
     height: auto;
-}
-
-/* Empêche le redimensionnement des textarea */
-textarea {
-    resize: vertical;
 }
 
 /* ===== Tables ===== */
@@ -159,25 +133,12 @@ table {
     border-spacing: 0;
 }
 
-/* ===== Éléments sémantiques HTML5 ===== */
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-main,
-nav,
-section {
-    margin: 0;
-    padding: 0;
+/* ===== Éléments sémantiques ===== */
+article, aside, details, figcaption, figure, footer, header, main, nav, section {
     display: block;
 }
 
-/* ===== Accessibilité ===== */
-
-/* Cache visuellement mais reste accessible aux lecteurs d'écran */
+/* ===== Accessibilité (sr-only) ===== */
 .sr-only {
     position: absolute;
     width: 1px;
@@ -190,11 +151,9 @@ section {
     border-width: 0;
 }
 
-/* Supprime les animations pour les utilisateurs qui les désactivent */
+/* ===== Préférences Utilisateur ===== */
 @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
+    *, *::before, *::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
@@ -202,80 +161,28 @@ section {
     }
 }
 
-/* ===== Sélection de texte ===== */
-::selection {
-    background-color: rgba(59, 130, 246, 0.3);
-    color: inherit;
-}
-
-::-moz-selection {
-    background-color: rgba(59, 130, 246, 0.3);
-    color: inherit;
-}
-
 /* ===== Scrollbar personnalisée (Webkit) ===== */
+/* Note: Sera appliquée au 'main' car html/body sont hidden */
 ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+    width: 8px; /* Un peu plus fin pour l'élégance */
+    height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: transparent; 
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 5px;
+    background: rgba(136, 136, 136, 0.5); /* Semi-transparent */
+    border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: rgba(136, 136, 136, 0.8);
 }
 
-/* ===== Focus visible (accessibilité) ===== */
+/* ===== Focus visible ===== */
 :focus-visible {
-    outline: 2px solid #3b82f6;
+    outline: 2px solid var(--color-accent-light, #3b82f6);
     outline-offset: 2px;
-}
-
-/* ===== Autres resets utiles ===== */
-
-/* Empêche le dépassement de contenu */
-#root {
-    overflow-x: hidden;
-}
-
-/* Reset des abbréviations */
-abbr[title] {
-    text-decoration: underline dotted;
-    cursor: help;
-}
-
-/* Reset du code */
-code,
-kbd,
-samp,
-pre {
-    font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
-}
-
-/* Reset des citations */
-blockquote,
-q {
-    quotes: none;
-}
-
-blockquote::before,
-blockquote::after,
-q::before,
-q::after {
-    content: '';
-    content: none;
-}
-
-/* Reset du hr */
-hr {
-    border: none;
-    border-top: 1px solid #e5e7eb;
-    margin: 1rem 0;
 }
