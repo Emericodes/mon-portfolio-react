@@ -3,10 +3,10 @@
   height: 100vh;
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
-  
-  overflow: hidden;  
+  padding-bottom: 50px; 
+  overflow: hidden;
 }
 
 .backgroundWrapper {
@@ -47,17 +47,25 @@
 }
 
 .contentContainer {
-  position: relative; 
-  z-index: 1; 
-  text-align: start;
-  padding: 0 1rem;
-  max-width: 800px;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1000px; 
+  display: flex;
+  flex-direction: column; 
+  align-items: center;    
+  gap: 2rem;
+}
+.mainContent {
   display: flex;
   align-items: center;
-  gap: 3px;
+  justify-content: center;
+  gap: 40px; 
+  width: 100%;
 }
 .textWrapper {
-  flex-basis: 60%;
+  flex: 1;
+  text-align: left;
 }
 .title {
   
@@ -86,4 +94,35 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+.ctaContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  animation: fadeUp 0.8s ease-out 0.4s forwards;
+}
+.socialLink {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.myIcon {
+    stroke: #ffffff;
+    stroke-width: 2px;
+    transition: all 0.3s ease;
+}
+
+.socialLink:hover .myIcon {
+    stroke: #61dafb; 
+    transform: scale(1.2) rotate(5deg);
+}
+
+.socialLink:hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }

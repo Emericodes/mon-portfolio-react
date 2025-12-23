@@ -13,9 +13,16 @@ interface HeaderProps {
 const Header = ({ activeSection, onNavigate }: HeaderProps) => {
 	const [isHovered, setIsHovered] = useState(false);
 
+	const navLinks: { id: SectionId; label: string }[] = [
+		{ id: "about", label: "À propos" },
+		{ id: "projects", label: "Projets" },
+		{ id: "contact", label: "Contact" },
+	];
+	const isNotHome = activeSection !== "home";
 	return (
 		<div className={styles.headerWrapper}>
-			<header className={styles.header}>
+			<header className={`${styles.header} ${isNotHome ? styles.lightHeader : ""}`}>
+
 				<button
 					type="button"
 					className={styles.logoContainer}
@@ -31,23 +38,17 @@ const Header = ({ activeSection, onNavigate }: HeaderProps) => {
 					<span className={styles.siteName}>Emeric Mouillat</span>
 				</button>
 
-				<nav
-					className={styles.mainNavigation}
-					aria-label="Navigation principale"
-				>
-					{(["about", "projects", "contact"] as SectionId[]).map((section) => (
+				<nav className={styles.nav}>
+					{navLinks.map((link) => (
 						<button
-							key={section}
+							key={link.id}
 							type="button"
-							className={styles.navLink}
-							onClick={() => onNavigate(section)}
-							aria-current={activeSection === section ? "page" : undefined}
+							className={`${styles.navLink} ${
+								activeSection === link.id ? styles.active : ""
+							}`}
+							onClick={() => onNavigate(link.id)}
 						>
-							{section === "about"
-								? "À propos"
-								: section === "projects"
-									? "Projets"
-									: "Contact"}
+							{link.label}
 						</button>
 					))}
 				</nav>

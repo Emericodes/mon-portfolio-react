@@ -1,12 +1,20 @@
 import { useState } from "react";
-import HomeSection from "./sections/HomeSection";
 import Header, { type SectionId } from "./components/Header";
+import AboutSection from "./sections/AboutSection";
+import HomeSection from "./sections/HomeSection";
+
 
 function App() {
 	const [activeSection, setActiveSection] = useState<SectionId>("home");
 
 	const handleNavigate = (section: SectionId) => {
 		setActiveSection(section);
+
+	const element = document.getElementById(section);
+
+	if (element) {
+		element.scrollIntoView({ behavior: "smooth" });
+	}
 	};
 	return (
 		<>
@@ -14,9 +22,8 @@ function App() {
 				<Header activeSection={activeSection} onNavigate={handleNavigate} />
 			</div>
 			<main>
-				<section id="home">
-					<HomeSection />
-				</section>
+					<HomeSection onNavigate={handleNavigate} />
+					<AboutSection />
 			</main>
 		</>
 	);

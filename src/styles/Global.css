@@ -17,8 +17,10 @@
 /* --- Variables Globales de Design --- */
 :root {
   /* Couleurs de base */
-  --color-bg-primary: #121212;
+  --color-bg-primary: #e6e4e4;
   --color-text-primary: #e0e0e0;
+  --background-color-secondary: #d3d3d3;
+
 
   /* Couleurs d'accentuation et boutons (ajoutées pour le header) */
   --color-accent: #0027a8;

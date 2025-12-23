@@ -1,0 +1,13 @@
+section.aboutSection {
+    background-color: var(--Background-color-secondary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+section.aboutSection h2,
+section.aboutSection p {
+    color: #121212; 
+}

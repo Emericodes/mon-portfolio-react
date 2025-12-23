@@ -18,11 +18,15 @@
   top: 1rem;
   z-index: 1000;
 }
+.header.lightHeader {
+  background-color: rgba(255, 255, 255, 0.7); 
+  backdrop-filter: blur(15px); 
+}
+
 .logoContainer {
-  /* MODIFICATION: Assure que l'alignement vertical est centré et gère l'espacement */
   display: flex;
   align-items: center;
-  gap: 0.75rem; /* Ajusté l'espacement entre l'image et le texte (était déjà là, mais essentiel) */
+  gap: 0.75rem;
   color: var(--color-text-primary);
   cursor: pointer;
   transition: color var(--transition-fast);
@@ -56,13 +60,20 @@
   gap: 1rem;
 }
 .siteName {
-  /* MODIFICATION: Style spécifique pour le nom du site */
   color: var(--color-text-primary);
-  font-size: 1.5rem; /* Une taille spécifique et plus lisible */
-  font-weight: 700; /* Rendu plus proéminent */
-  letter-spacing: 0.5px; /* Petit espacement pour un look soigné */
-  margin-left: 0.5rem; /* Ajout d'un petit espacement supplémentaire si nécessaire, mais le gap de .logoContainer devrait suffire */
-  line-height: 1.2; /* Améliore l'apparence */
+  font-size: 1.5rem; 
+  font-weight: 700; 
+  letter-spacing: 0.5px; 
+  line-height: 1.2; 
+}
+.header.lightHeader .siteName {
+  color: #1d1d1f;
+}
+.nav {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem; 
+  align-items: center;
 }
 .navLink {
   display: flex;
@@ -109,4 +120,9 @@
   .navLink {
     border: 1px solid var(--color-accent-light);
   }
+}
+
+.header.lightHeader .navLink {
+  color: black;
+  background: #f5f5f7;
 }
