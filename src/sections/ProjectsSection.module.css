@@ -1,0 +1,14 @@
+section.projectsSection {
+    background-color: var(--Background-color-secondary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+section.projectsSection h2,
+section.projectsSection p {
+    color: #121212; 
+}
+

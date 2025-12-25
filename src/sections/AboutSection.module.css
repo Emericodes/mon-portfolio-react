@@ -1,13 +1,106 @@
-section.aboutSection {
+.aboutSection {
+    display: flex;
+    align-items: flex-start;
     background-color: var(--Background-color-secondary);
-    min-height: 100vh;
+    margin-top: 1500px;
+    justify-content: space-between;
+    padding: 4rem 10%; 
+    gap: 50px;
+}
+
+.aboutSection div:first-of-type { 
+    flex: 1; 
+    max-width: 50%; 
+}
+.textcontainer{
+    display: flex;
+    flex-direction: column;
+}
+.aboutSection h2 {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 2.5rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    color: #121212;
+}
+
+.aboutSection h3 {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.aboutSection p {
+    color: #121212;
+    line-height: 1.6;
+    font-size: 1.1rem;
+    width: 80%;
+}
+
+.cardsContainer {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 10px; 
+    list-style: none;
+    padding: 0;
+}
+
+.cardsContainer li {
+    margin-top: 3rem;
+    box-sizing: border-box;
+    width: 220px; 
+    min-height: 150px;
+    background: rgba(255, 255, 255, 0.4); 
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); 
+    backdrop-filter: blur(8px);
+    border-radius: 15px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    color: #121212;
 }
 
-section.aboutSection h2,
-section.aboutSection p {
-    color: #121212; 
+.cardsContainer li h4 {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    color: #000;
+}
+
+.cardsContainer li p {
+    font-size: 0.9rem;
+    color: #444;
+}
+
+.cardsContainer li:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid var(--Primary-color, #000);
+}
+
+@media (max-width: 900px) {
+    .aboutSection {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 5%;
+    }
+    
+    .aboutSection div:first-of-type {
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .cardsContainer {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }

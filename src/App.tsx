@@ -2,6 +2,9 @@ import { useState } from "react";
 import Header, { type SectionId } from "./components/Header";
 import AboutSection from "./sections/AboutSection";
 import HomeSection from "./sections/HomeSection";
+import ProjectsSection from "./sections/ProjectsSection";
+
+
 
 
 function App() {
@@ -24,6 +27,8 @@ function App() {
 			<main>
 					<HomeSection onNavigate={handleNavigate} />
 					<AboutSection />
+					<ProjectsSection />
+					
 			</main>
 		</>
 	);
