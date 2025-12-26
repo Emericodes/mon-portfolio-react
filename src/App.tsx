@@ -26,7 +26,7 @@ function App() {
 			</div>
 			<main>
 					<HomeSection onNavigate={handleNavigate} />
-					<AboutSection />
+					<AboutSection onNavigate={handleNavigate} />
 					<ProjectsSection />
 					
 			</main>

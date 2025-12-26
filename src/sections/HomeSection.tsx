@@ -56,6 +56,7 @@ const HomeSection = ({ onNavigate }: { onNavigate: (id: SectionId) => void }) =>
    					 <Mail className={styles.myIcon} />
 					</a>
                 </div>
+            </div>
 				<button 
                     type="button" 
                     className={styles.arrowButton} 
@@ -63,7 +64,6 @@ const HomeSection = ({ onNavigate }: { onNavigate: (id: SectionId) => void }) =>
                     >
 					<ChevronDown className={styles.arrow} />
 				</button>
-            </div>
         </section>
     );
 }

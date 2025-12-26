@@ -1,6 +1,9 @@
+import { ChevronDown } from "lucide-react";
+import type { SectionId } from "../components/Header";
 import styles from "./AboutSection.module.css";
 
-function AboutSection() {
+const AboutSection = ({ onNavigate }: { onNavigate: (id: SectionId) => void }) => {
+
     return (
 <section id="about" className={styles.aboutSection}>
     <div className={styles.textcontainer}>
@@ -45,6 +48,13 @@ function AboutSection() {
             <p>Linux (Steam os / Mint / Fedora), Mac OS, Windows</p>
         </li>
     </ul>
+    <button 
+        type="button" 
+        className={styles.arrowButton} 
+        onClick={() => onNavigate("projects")}
+         >
+			<ChevronDown className={styles.arrow} />
+	</button>
 </section>
     );
 }
