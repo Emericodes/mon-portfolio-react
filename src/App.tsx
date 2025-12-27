@@ -3,6 +3,7 @@ import Header, { type SectionId } from "./components/Header";
 import AboutSection from "./sections/AboutSection";
 import HomeSection from "./sections/HomeSection";
 import ProjectsSection from "./sections/ProjectsSection";
+import SoundWallSection from "./sections/SoundWallSection";
 
 
 
@@ -28,6 +29,7 @@ function App() {
 					<HomeSection onNavigate={handleNavigate} />
 					<AboutSection onNavigate={handleNavigate} />
 					<ProjectsSection />
+					<SoundWallSection/>
 					
 			</main>
 		</>

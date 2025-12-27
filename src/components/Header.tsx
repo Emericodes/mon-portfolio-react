@@ -3,7 +3,7 @@ import logo from "../assets/images/logo.png";
 import logodark from "../assets/images/logodark.png";
 import styles from "./Header.module.css";
 
-export type SectionId = "home" | "about" | "projects" | "contact";
+export type SectionId = "home" | "about" | "projects" | "contact" | "soundwall";
 
 interface HeaderProps {
 	activeSection: SectionId;
@@ -17,6 +17,7 @@ const Header = ({ activeSection, onNavigate }: HeaderProps) => {
 		{ id: "about", label: "À propos" },
 		{ id: "projects", label: "Projets" },
 		{ id: "contact", label: "Contact" },
+		{ id: "soundwall", label: "SoundWall" },
 	];
 	const isNotHome = activeSection !== "home";
 	return (
