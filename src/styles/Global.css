@@ -13,40 +13,31 @@
   font-weight: 500;
   font-style: normal;
 }
-
-/* --- Variables Globales de Design --- */
 :root {
-  /* Couleurs de base */
   --color-bg-primary: #e6e4e4;
   --color-text-primary: #e0e0e0;
+  --color-text-black: #121212;
+  --color-text-p:#121212;
+  --color-text-h2: #3103ae;
   --background-color-secondary: #d3d3d3;
-
-
-  /* Couleurs d'accentuation et boutons (ajoutées pour le header) */
+  --background-color-form: rgba(255, 255, 255, 0.2);
+  --box-shadow-color: 0 8px 32px rgba(0, 0, 0, 0.266); 
   --color-accent: #0027a8;
   --color-accent-light: #6366f1;
   --color-btn-bg: rgba(1, 2, 65, 0.58);
   --color-btn-bg-hover: #e1e1e1;
-
-  /* Typographie */
   --font-heading: "Poppins", "Arial", sans-serif;
   --font-body: "Inter", "Helvetica", sans-serif;
   --font-size-h1: 2.5rem;
   --font-size-h2: 2rem;
   --font-size-p: 1rem;
-
-  /* Spécifique au Header (ajouté) */
   --header-height: 70px;
   --color-bg-header: rgba(20, 20, 30, 0.85);
   --color-border-header: rgba(255, 255, 255, 0.479);
-
-  /* Transitions et Focus (ajouté) */
   --transition-fast: 0.2s ease;
   --focus-outline: 2px solid var(--color-accent-light);
   --focus-outline-offset: 2px;
 }
-
-/* --- Styles de base --- */
 body {
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
@@ -81,7 +72,6 @@ p {
   margin-bottom: 1rem;
 }
 
-/* --- Styles pour le scroll snapping --- */
 main section {
   min-height: 100vh;
   width: 100%;

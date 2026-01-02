@@ -1,0 +1,32 @@
+.scrollButton {
+    position: absolute;
+    bottom: 30px;       
+    left: 50%;          
+    transform: translate(-50%, 0);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 100;        
+    animation: bounce 2s infinite; 
+}
+.chevron {
+    width: 48px;        
+    height: 48px;
+    color: #121212;     
+    transition: color 0.3s ease;
+}
+.chevron:hover {
+    color: #0641a0; 
+}
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translate(-50%, 0);
+  }
+  40% {
+    transform: translate(-50%, -10px);
+  }
+  60% {
+    transform: translate(-50%, -5px);
+  }
+}
