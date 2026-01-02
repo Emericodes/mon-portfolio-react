@@ -1,0 +1,87 @@
+/* --- Définition des polices locales --- */
+@font-face {
+  font-family: "Inter";
+  src: url("../assets/fonts/Inter/static/Inter_28pt-Medium.ttf")
+    format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../assets/fonts/Poppins/Poppins-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+:root {
+  --color-bg-primary: #e6e4e4;
+  --color-text-primary: #e0e0e0;
+  --color-text-black: #121212;
+  --color-text-p:#121212;
+  --color-text-h2: #3103ae;
+  --background-color-secondary: #d3d3d3;
+  --background-color-form: rgba(255, 255, 255, 0.2);
+  --box-shadow-color: 0 8px 32px rgba(0, 0, 0, 0.266); 
+  --color-accent: #0027a8;
+  --color-accent-light: #6366f1;
+  --color-btn-bg: rgba(1, 2, 65, 0.58);
+  --color-btn-bg-hover: #e1e1e1;
+  --font-heading: "Poppins", "Arial", sans-serif;
+  --font-body: "Inter", "Helvetica", sans-serif;
+  --font-size-h1: 2.5rem;
+  --font-size-h2: 2rem;
+  --font-size-p: 1rem;
+  --header-height: 70px;
+  --color-bg-header: rgba(20, 20, 30, 0.85);
+  --color-border-header: rgba(255, 255, 255, 0.479);
+  --transition-fast: 0.2s ease;
+  --focus-outline: 2px solid var(--color-accent-light);
+  --focus-outline-offset: 2px;
+}
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h1);
+  color: var(--color-text-primary);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h2);
+  color: var(--color-text-primary);
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 0.875rem;
+}
+
+p {
+  font-family: var(--font-body);
+  font-size: var(--font-size-p);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+main section {
+  min-height: 100vh;
+  width: 100%;
+  scroll-snap-align: start;
+}
+
+main {
+  height: 100vh; 
+  width: 100%;
+  overflow-y: scroll; 
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}

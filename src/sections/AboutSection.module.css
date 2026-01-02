@@ -1,0 +1,128 @@
+.aboutSection {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    background-color: var(--Background-color-secondary);
+    justify-content: space-between;
+    padding: 5rem 5%; 
+    gap: 4rem;
+}
+
+
+.textabout{
+    flex: 0 0 40%;
+    display: flex;
+    flex-direction: column;
+}
+.aboutSection h2 {
+    color: var(--color-text-h2);
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 2.5rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+
+.aboutSection h3 {
+    font-size: 1.2rem;
+    color: var(--color-text-black);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.aboutSection p {
+    color: var(--color-text-p);
+    line-height: 1.6;
+    font-size: 1.1rem;
+    width: 80%;
+    margin-bottom: 1.5rem; 
+}
+.bold{
+    font-weight: bold;
+    color: var(--color-text-h2);
+    line-height: 1.6;
+    font-size: 1.1rem;
+    width: 80%; 
+}
+.cardsAbout {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 5px; 
+    list-style: none;
+    padding: 0;
+}
+
+.cardsAbout li {
+    margin-top: 2rem;
+    box-sizing: border-box;
+    width: 240px; 
+    min-height: 150px;
+    background: rgba(255, 255, 255, 0.4); 
+    border: 1.5px solid var(--color-border-header);
+    box-shadow: var(--box-shadow-color);
+    backdrop-filter: blur(8px);
+    border-radius: 15px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;            
+    justify-content: center;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    color: var(--color-text-p);
+}
+
+.cardsAbout li h4 {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    color: var(--color-text-h2);
+}
+
+.cardsAbout li p {
+    font-size: 0.9rem;
+    color: var(--color-text-p);
+}
+
+.cardsAbout li:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid var(--Primary-color, #000);
+}
+
+@media (max-width: 1200px) {
+    .aboutSection {
+        padding: 5rem 5%;
+        gap: 2rem;
+    }
+    .aboutSection h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .aboutSection {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 4rem 5%;
+    }
+    
+    .textabout {
+        flex: 0 0 100%;
+        width: 100%;
+        align-items: center;
+    }
+
+    .aboutSection p, .bold {
+        width: 100%;
+    }
+
+    .cardsAbout {
+        grid-template-columns: 1fr; 
+        justify-items: center;
+    }
+}
