@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./SoundWallSection.module.css";
 import * as Tone from "tone";
 import { Play, AlertCircle } from "lucide-react";
+import { BAD_WORDS } from "./constants";
 
 interface VisualCircle {
     id: number;
@@ -15,47 +16,6 @@ interface WallMessage {
     id: string;
     text: string;
 }
-
-const BAD_WORDS = [
-    "abruti", "abrutie", "anus", "arabe", "batard", "batarde", "benet", "biatch", 
-    "bibite", "bicot", "bicotte", "bite", "bites", "bitte", "biteur", "biture", 
-    "boche", "bordel", "boucaque", "bougnoul", "bougnoule", "bouffon", "bouffonne", 
-    "boule", "bourrer", "branle", "branlee", "branleur", "branleuse", "brêle", 
-    "brouter", "brouteur", "broutage", "burnes", "cac", "caca", "cageot", "con", 
-    "conne", "conard", "connard", "connnard", "connasse", "couille", "couillon", 
-    "couillu", "crade", "crass", "cretin", "crotte", "cul", "debile", "deconne", 
-    "deconner", "degage", "degueu", "degueulasse", "encule", "enculee", "enculer", 
-    "enfoire", "enfoiree", "etron", "fion", "fiotte", "fist", "foutre", "foufoune", 
-    "fourien", "frotteur", "frugivore", "fuck", "fumier", "garage", "garce", 
-    "gland", "glandeur", "glandu", "glauque", "gogol", "gouine", "gourdasse", 
-    "grognasse", "gueule", "imbecile", "inceste", "inculte", "insulte", "insultes", 
-    "ivrogne", "jarter", "jean-foutre", "jobard", "jobastre", "jouir", "juif", 
-    "kike", "lache", "laideron", "lavette", "loche", "lopette", "loubard", "louch", 
-    "louche", "lourd", "lourdingue", "maboul", "macaque", "mange-merde", "manger", 
-    "manouche", "merde", "merdique", "merdeux", "meuf", "minette", "moche", 
-    "mongol", "moule", "naze", "nazi", "negre", "negresse", "neuneu", "nique", 
-    "niquer", "niqueur", "noeud", "nouille", "nuls", "nympho", "obsede", "oignon", 
-    "orgie", "ouste", "pouf", "poufiasse", "pd", "pédé", "pede", "pelle", "penis", 
-    "peta", "petasse", "peter", "petochard", "phallus", "piche", "pine", "pisser", 
-    "pisseur", "pisseuse", "pipe", "pouffiasse", "pourri", "pourriture", "pue", 
-    "pute", "putain", "raclure", "raciste", "radasse", "rat", "rate", "rectum", 
-    "ringard", "rogne", "romano", "rongeon", "rosbif", "rouste", "roupettes", 
-    "salaud", "salopard", "salope", "saperlipopette", "schleu", "schnock", 
-    "schpountz", "semence", "sexe", "sodomie", "sodomiser", "suce", "sucer", 
-    "suceur", "suceuse", "tafiole", "tantouze", "tapette", "tare", "tarlouze", 
-    "teub", "teuch", "teuche", "tocard", "tonche", "tont", "touze", "trainée", 
-    "travelo", "tronche", "trou", "trouduc", "truie", "uterus", "vagin", "vaseux", 
-    "veule", "vicelard", "videuse", "viol", "viole", "violer", "vol", "voleur", 
-    "vomi", "voyou", "vulve", "wesh", "xénophobe", "zizi", "zob", "zoulette", 
-    "ass", "asshole", "bastard", "bitch", "blowjob", "bollocks", "boob", "boobs", 
-    "bugger", "bullshit", "clit", "cock", "coon", "crap", "cum", "cunt", "damn", 
-    "dick", "dildo", "douche", "fag", "faggot", "feck", "fuck", "fucker", "fucking", 
-    "gay", "handjob", "hell", "homo", "idiot", "jerk", "jizz", "knob", "lezzie", 
-    "masturbate", "moron", "motherfucker", "nazi", "nigger", "orgasm", "penis", 
-    "piss", "poop", "porn", "prick", "pussy", "queer", "rape", "retard", "rimjob", 
-    "scum", "sex", "shit", "shite", "slag", "slut", "smegma", "spastic", "tit", 
-    "tits", "tosser", "turd", "twat", "wanker", "whore", "wtf"
-];
 
 const SoundWallSection = () => {
     const [audioOn, setAudioOn] = useState(false);
@@ -79,11 +39,15 @@ const SoundWallSection = () => {
 
     const checkBadWord = (inputText: string) => {
         const lower = inputText.toLowerCase();
-        for (let i = 0; i < BAD_WORDS.length; i++) {
-            if (lower.includes(BAD_WORDS[i])) {
+        const cleanText = lower.replace(/[.,/#!$%^&*;:{}=_`~()\-\]]/g, " ");
+        const words = cleanText.split(/\s+/);
+        
+        for (let i = 0; i < words.length; i++) {
+            if (BAD_WORDS.includes(words[i])) {
                 return true;
             }
         }
+        
         return false;
     };
 
@@ -150,22 +114,22 @@ const SoundWallSection = () => {
         makeCircle();
     };
 
-    const typing = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    const typing = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
         if (!audioOn) return;
 
-        if (e.key === "Enter" && !e.shiftKey) {
-            e.preventDefault();
+        if (event.key === "Enter" && !event.shiftKey) {
+            event.preventDefault();
             sendToWall();
             return;
         }
 
-        if (e.key.length === 1) {
-            playNote(e.key);
+        if (event.key.length === 1) {
+            playNote(event.key);
         }
     };
 
-    const inputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        setText(e.target.value);
+    const inputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setText(event.target.value);
         if (error) setError(null);
     };
 

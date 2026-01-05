@@ -11,7 +11,8 @@ const NavHamburger = ({ onClick, isOpen }: NavHamburgerProps) => {
             type="button"
             className={styles.hamburger} 
             onClick={onClick}
-            aria-label="Ouvrir le menu"
+            aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
+            aria-expanded={isOpen}
         >
             <div className={`${styles.burgerLine} ${isOpen ? styles.rotate1 : ''}`} />
             <div className={`${styles.burgerLine} ${isOpen ? styles.hide : ''}`} />
