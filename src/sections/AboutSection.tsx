@@ -1,4 +1,4 @@
-import cvPdf from "../assets/docs/Mouillat Emeric.pdf";
+import cvPdf from "../assets/docs/MouillatEmeric.pdf";
 import cvimg from "../assets/images/CV Emeric.png";
 import type { SectionId } from "../components/Header";
 import ScrollArrow from "../components/ScrollArrow";
