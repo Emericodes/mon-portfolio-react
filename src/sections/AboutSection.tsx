@@ -1,5 +1,5 @@
-import cvPdf from "../assets/docs/MouillatEmeric.pdf";
-import cvimg from "../assets/images/CV Emeric.png";
+import cvPdf from "../assets/docs/Mouillat_Emeric_CV.pdf";
+import cvimg from "../assets/images/cv.png";
 import type { SectionId } from "../components/Header";
 import ScrollArrow from "../components/ScrollArrow";
 import styles from "./AboutSection.module.css";
@@ -9,12 +9,9 @@ interface Skill {
 	title: string;
 	content: string;
 }
+
 const skillsData: Skill[] = [
-	{
-		id: "Front",
-		title: "FrontEnd",
-		content: "HTML5, CSS3, JavaScript, React",
-	},
+	{ id: "Front", title: "FrontEnd", content: "HTML5, CSS3, JavaScript, React" },
 	{
 		id: "Back",
 		title: "BackEnd",
@@ -50,9 +47,13 @@ const AboutSection = ({
 	onNavigate: (id: SectionId) => void;
 }) => {
 	return (
-		<section id="about" className={styles.aboutSection}>
+		<section
+			id="about"
+			className={styles.aboutSection}
+			aria-labelledby="about-title"
+		>
 			<div className={styles.textabout}>
-				<h2>À propos de moi</h2>
+				<h2 id="about-title">À propos de moi</h2>
 				<h3>Mon parcours</h3>
 				<p>
 					Après une décennie en gestion technique et management, j'ai choisi de
@@ -62,7 +63,7 @@ const AboutSection = ({
 				<p>
 					Ce n'est pas un départ à zéro, mais une évolution logique : le code a
 					toujours été mon allié pour automatiser des analyses de tendances ou
-					optimiser la productivité de mes équipes.
+					optimiser la productivité des équipes.
 				</p>
 				<p>
 					Aujourd’hui, je transitionne vers le métier de{" "}
@@ -76,26 +77,29 @@ const AboutSection = ({
 
 			<ul className={styles.cardsAbout}>
 				{skillsData.map((skill) => (
-					<li key={skill.id}>
+					<li key={skill.id} className={styles.skillCard}>
 						<h4>{skill.title}</h4>
 						<p>{skill.content}</p>
 					</li>
 				))}
 
+				{/* Carte CV */}
+		
 				<li className={`${styles.cardsAboutLi} ${styles.cvCardContainer}`}>
 					<a
 						href={cvPdf}
 						target="_blank"
 						rel="noreferrer"
-						download
+						download="CV_Emeric_Mouillat.pdf"
 						className={styles.cvLink}
+						aria-label="Télécharger mon CV complet au format PDF (ouvre un nouvel onglet)"
 					>
 						<div className={styles.cvImage}>
-							<img src={cvimg} alt="Miniature du CV" />
+							<img src={cvimg} alt="" aria-hidden="true" />
 						</div>
-						<div className={styles.cvText}>
-							<h4>Mon CV complet</h4>
-							<p>Télécharger au format PDF</p>
+						<div className={styles.cvContent}>
+							<h4 className={styles.cvTitle}>Mon CV complet</h4>
+							<p className={styles.cvTextDesc}>Télécharger au format PDF</p>
 						</div>
 					</a>
 				</li>

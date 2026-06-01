@@ -29,8 +29,7 @@ const HomeSection = ({
 					<h2 className={styles.subtitle}>
 						Développeur Web Fullstack Junior. <br />
 						<strong className={styles.strongText}>
-							Opérationnel aujourd'hui, en pleine exploration de l'écosystème
-							React & Node.js.
+							Opérationnel aujourd'hui, à la recherche d'une expérience professionnelle.
 						</strong>
 					</h2>
 
