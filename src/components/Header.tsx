@@ -48,6 +48,7 @@ const Header = ({ activeSection, onNavigate }: HeaderProps) => {
                     onMouseEnter={() => setLogoHover(true)}
                     onMouseLeave={() => setLogoHover(false)}
                     onClick={clickLogo}
+                    aria-label="Retourner à l'accueil"
                 >
                     <img
                         className={styles.logoImg}
@@ -57,7 +58,7 @@ const Header = ({ activeSection, onNavigate }: HeaderProps) => {
                     <span className={styles.name}>Emeric Mouillat</span>
                 </button>
 
-                <nav className={styles.desktopNav}>
+                <nav className={styles.desktopNav} aria-label="Navigation principale">
                     {links.map((link) => (
                         <button
                             key={link.id}
@@ -66,6 +67,7 @@ const Header = ({ activeSection, onNavigate }: HeaderProps) => {
                                 activeSection === link.id ? styles.active : ""
                             }`}
                             onClick={() => clickLink(link.id as SectionId)}
+                            aria-current={activeSection === link.id ? "page" : undefined}
                         >
                             {link.label}
                         </button>
@@ -82,7 +84,11 @@ const Header = ({ activeSection, onNavigate }: HeaderProps) => {
 
             {menuOpen && (
                 <div className={styles.mobileMenu}>
-                    <nav className={styles.mobileNavList}>
+                    <nav
+                        id="mobile-navigation"
+                        className={styles.mobileNavList}
+                        aria-label="Navigation mobile"
+                    >
                         {links.map((link) => (
                             <button
                                 key={link.id}
@@ -91,6 +97,7 @@ const Header = ({ activeSection, onNavigate }: HeaderProps) => {
                                     activeSection === link.id ? styles.active : ""
                                 }`}
                                 onClick={() => clickLink(link.id as SectionId)}
+                                aria-current={activeSection === link.id ? "page" : undefined}
                             >
                                 {link.label}
                             </button>

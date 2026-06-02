@@ -5,6 +5,7 @@
 	justify-content: space-around;
 	flex-direction: column;
 	cursor: pointer;
+	border-radius: 8px;
 }
 .burgerLine {
 	width: 2rem;
@@ -13,4 +14,17 @@
 	background-color: black;
 	transform-origin: 1px;
 	transition: all 0.3s ease-in-out;
+}
+
+.rotate1 {
+	transform: rotate(45deg);
+}
+
+.rotate2 {
+	transform: rotate(-45deg);
+}
+
+.hide {
+	opacity: 0;
+	transform: translateX(1rem);
 }

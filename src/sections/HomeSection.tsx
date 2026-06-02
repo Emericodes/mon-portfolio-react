@@ -55,18 +55,20 @@ const HomeSection = ({
 						href="https://github.com/Emericodes"
 						target="_blank"
 						rel="noreferrer"
+						aria-label="Voir mon profil GitHub"
 					>
-						<Github className={styles.myIcon} />
+						<Github className={styles.myIcon} aria-hidden="true" />
 					</a>
 					<a
 						href="https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile"
 						target="_blank"
 						rel="noreferrer"
+						aria-label="Voir mon profil LinkedIn"
 					>
-						<Linkedin className={styles.myIcon} />
+						<Linkedin className={styles.myIcon} aria-hidden="true" />
 					</a>
-					<a href="mailto:pro.emeric.m@gmail.com">
-						<Mail className={styles.myIcon} />
+					<a href="mailto:pro.emeric.m@gmail.com" aria-label="M'envoyer un email">
+						<Mail className={styles.myIcon} aria-hidden="true" />
 					</a>
 				</div>
 			</div>
@@ -74,8 +76,9 @@ const HomeSection = ({
 				type="button"
 				className={styles.arrowButton}
 				onClick={() => onNavigate("about")}
+				aria-label="Aller à la section À propos"
 			>
-				<ChevronDown className={styles.arrow} />
+				<ChevronDown className={styles.arrow} aria-hidden="true" />
 			</button>
 		</section>
 	);

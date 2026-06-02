@@ -8,7 +8,7 @@
   padding-left: 5%;
   padding-right: 5%;
   min-height: 100vh;
-  background-color: var(--Background-color-secondary);
+  background-color: var(--background-color-secondary);
 }
 
 .formCard {
@@ -61,12 +61,14 @@
 .categoryGroup {
   text-align: left;
   margin-bottom: 1.25rem;
+  border: 0;
 }
 
-.categoryGroup p {
+.categoryGroup legend {
   font-weight: bold;
   font-size: 0.875rem;
   margin-bottom: 0.3125rem;
+  color: var(--color-text-h2);
 }
 
 .radioOptions {

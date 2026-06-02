@@ -12,9 +12,13 @@ const ProjectsSection = ({
 	onNavigate: (id: SectionId) => void;
 }) => {
 	return (
-		<section id="projects" className={styles.projectsSection}>
+		<section
+			id="projects"
+			className={styles.projectsSection}
+			aria-labelledby="projects-title"
+		>
 			<div className={styles.textprojects}>
-				<h2>Bienvenue dans ma galerie de projets ! </h2>
+				<h2 id="projects-title">Bienvenue dans ma galerie de projets ! </h2>
 
 				<p>
 					J'ai déployé ces applications pour vous permettre de tester mes
@@ -50,12 +54,13 @@ const ProjectsSection = ({
 						target="_blank"
 						rel="noreferrer"
 						className={styles.projectsLink}
+						aria-label="Ouvrir le projet ReactEvil dans un nouvel onglet"
 					>
 						<img
 							src={ReactEvil}
-							alt="Projects Quizz"
+							alt="Aperçu du projet ReactEvil"
 							className={styles.projectsImage}
-							fetchPriority="high"
+							loading="lazy"
 						/>
 					</a>
 				</li>
@@ -66,40 +71,50 @@ const ProjectsSection = ({
 						target="_blank"
 						rel="noreferrer"
 						className={styles.projectsLink}
+						aria-label="Ouvrir le projet Mon Organisateur React dans un nouvel onglet"
 					>
 						<img
 							src={ReactOrganizer}
-							alt="Projects Quizz"
+							alt="Aperçu du projet Mon Organisateur React"
 							className={styles.projectsImage}
-							fetchPriority="high"
+							loading="lazy"
 						/>
 					</a>
 				</li>
 				<li>
 					<h4>Sound Wall </h4>
 
-					<img
-						src={SoundWall}
-						alt="Projects Quizz"
-						className={`${styles.projectsInt} ${styles.clickable}`}
-						fetchPriority="high"
+					<button
+						type="button"
+						className={styles.projectsButton}
 						onClick={() => onNavigate("soundwall")}
-						onKeyUp={(event) => {
-							if (event.key === "Enter" || event.key === " ") {
-								onNavigate("soundwall");
-							}
-						}}
-					/>
+						aria-label="Aller à la section SoundWall"
+					>
+						<img
+							src={SoundWall}
+							alt="Aperçu du projet SoundWall"
+							className={styles.projectsImage}
+							loading="lazy"
+						/>
+					</button>
 				</li>
 				<li>
 					<h4>Le Petit Cahier</h4>
-					<img
+					
+						<a
+						href="https://ptit-cahier.fr"
+						target="_blank"
+						rel="noreferrer"
+						className={styles.projectsLink}
+						aria-label="Ouvrir le projet Mon Organisateur React dans un nouvel onglet"
+					>
+						<img
 						src={PetitCahier}
-						alt="Projects Quizz"
+						alt="Aperçu du projet Le Petit Cahier"
 						className={styles.projectsImage}
-						fetchPriority="high"
+						loading="lazy"
 					/>
-					<p className={styles.bold}>disponible en Mars</p>
+					</a>
 				</li>
 			</ul>
 			<ScrollArrow target="contact" onNavigate={onNavigate} />

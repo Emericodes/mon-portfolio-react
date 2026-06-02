@@ -83,9 +83,7 @@ const AboutSection = ({
 					</li>
 				))}
 
-				{/* Carte CV */}
-		
-				<li className={`${styles.cardsAboutLi} ${styles.cvCardContainer}`}>
+				<li className={styles.cvCardContainer}>
 					<a
 						href={cvPdf}
 						target="_blank"

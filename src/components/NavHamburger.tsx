@@ -13,10 +13,11 @@ const NavHamburger = ({ onClick, isOpen }: NavHamburgerProps) => {
             onClick={onClick}
             aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
             aria-expanded={isOpen}
+            aria-controls="mobile-navigation"
         >
-            <div className={`${styles.burgerLine} ${isOpen ? styles.rotate1 : ''}`} />
-            <div className={`${styles.burgerLine} ${isOpen ? styles.hide : ''}`} />
-            <div className={`${styles.burgerLine} ${isOpen ? styles.rotate2 : ''}`} />
+            <span className={`${styles.burgerLine} ${isOpen ? styles.rotate1 : ""}`} />
+            <span className={`${styles.burgerLine} ${isOpen ? styles.hide : ""}`} />
+            <span className={`${styles.burgerLine} ${isOpen ? styles.rotate2 : ""}`} />
         </button>
     );
 };

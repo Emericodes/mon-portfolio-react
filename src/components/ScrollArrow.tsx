@@ -8,14 +8,22 @@ interface ScrollArrowProps {
 }
 
 const ScrollArrow = ({ target, onNavigate }: ScrollArrowProps) => {
+  const sectionLabels: Record<SectionId, string> = {
+    home: "Accueil",
+    about: "À propos",
+    projects: "Projets",
+    contact: "Contact",
+    soundwall: "SoundWall",
+  };
+
   return (
     <button 
     type = "button"
     className="scrollButton"
     onClick={() => onNavigate(target)}
-    aria-label={`Aller à la section ${target}`}
+    aria-label={`Aller à la section ${sectionLabels[target]}`}
     >
-      <ChevronDown className="chevron" />
+      <ChevronDown className="chevron" aria-hidden="true" />
     </button>
   );
 };

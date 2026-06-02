@@ -1,7 +1,7 @@
 import { useForm, ValidationError } from "@formspree/react";
+import type { SectionId } from "../components/Header";
 import ScrollArrow from "../components/ScrollArrow";
 import styles from "./ContactSection.module.css";
-import type { SectionId } from "../components/Header";
 
 const ContactSection = ({
 	onNavigate,
@@ -47,8 +47,8 @@ const ContactSection = ({
 				/>
 				<ValidationError prefix="Email" field="email" errors={state.errors} />
 
-				<div className={styles.categoryGroup}>
-					<p>Vous êtes :</p>
+				<fieldset className={styles.categoryGroup}>
+					<legend>Vous êtes :</legend>
 					<div className={styles.radioOptions}>
 						<label>
 							<input
@@ -63,7 +63,7 @@ const ContactSection = ({
 							<input type="radio" name="status" value="Visitor" /> Visiteur
 						</label>
 					</div>
-				</div>
+				</fieldset>
 
 				<label htmlFor="message">Message</label>
 				<textarea
@@ -90,12 +90,14 @@ const ContactSection = ({
 	};
 
 	return (
-		<section id="contact" className={styles.contactSection}>
+		<section
+			id="contact"
+			className={styles.contactSection}
+			aria-labelledby="contact-title"
+		>
 			<div className={styles.formCard}>
-				<h2>Me contacter</h2>
+				<h2 id="contact-title">Me contacter</h2>
 				<p>Une proposition de travail ou un commentaire? Écrivez-moi !</p>
-
-				{/* 3. On appelle la fonction qui décide quoi afficher */}
 				{renderContent()}
 			</div>
 			<ScrollArrow target="soundwall" onNavigate={onNavigate} />

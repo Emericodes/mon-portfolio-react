@@ -4,7 +4,7 @@
 	align-items: flex-start;
 	justify-content: space-between;
 	width: 100%;
-	background-color: var(--Background-color-secondary);
+	background-color: var(--background-color-secondary);
 	min-height: 100vh;
 	padding: 8rem 5%;
 	gap: 4rem;
@@ -45,7 +45,6 @@
 	gap: 10px;
 	list-style: none;
 	padding: 0;
-	
 }
 
 .cardsProjects li {
@@ -87,11 +86,11 @@
 	border: 1px solid var(--Primary-color, #000);
 }
 .projectsImage {
-	width: 350px;
+	width: min(100%, 350px);
 	height: auto;
-    
 }
-.projectsLink {
+.projectsLink,
+.projectsButton {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -111,37 +110,11 @@
 	gap: 5px;
 	margin-top: 10px;
 	margin-bottom: 10px;
-    cursor: pointer;
-}
-.projectsInt{
-    width: 350px;
-	height: auto;
-    display: flex;
-	align-items: center;
-	justify-content: center;
-	text-decoration: none;
-	font-weight: 500;
-	padding: 1rem 1.2rem;
-	border-radius: 8px;
-	position: relative;
-	outline: none;
-	transition: all 0.2s ease;
-	background: rgba(255, 255, 255, 0.393);
-	backdrop-filter: blur(12px) saturate(180%);
-	border: 1px solid rgba(255, 255, 255, 0.3);
-	box-shadow:
-		0 4px 15px rgba(0, 0, 0, 0.255),
-		inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-	gap: 5px;
-	margin-top: 10px;
-	margin-bottom: 10px;
-    cursor: pointer;
-}
-.clickable {
 	cursor: pointer;
 }
 
-.clickable:hover {
+.projectsLink:hover,
+.projectsButton:hover {
 	opacity: 0.8;
 	transform: scale(1.02);
 }
@@ -182,5 +155,21 @@
 	.cardsProjects {
 		grid-template-columns: 1fr;
 		justify-items: center;
+	}
+}
+
+@media (max-width: 480px) {
+	.projectsSection {
+		padding: 5rem 1rem 4rem;
+	}
+
+	.cardsProjects li {
+		height: auto;
+		min-height: 220px;
+	}
+
+	.projectsLink,
+	.projectsButton {
+		padding: 0.75rem;
 	}
 }
