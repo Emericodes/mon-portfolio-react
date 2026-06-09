@@ -1,217 +1,161 @@
-.homeSection {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  width: 100%;
-  overflow: hidden;
+.heroSection {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	width: 100%;
+	overflow: hidden;
 }
 
-.backgroundHome {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
+/* --- Background Isolé avec Effet Blur --- */
+.backgroundContainer {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: 
+		linear-gradient(to right, rgba(0, 0, 0, 0.7) 30%, rgba(0, 0, 0, 0.2) 100%),
+		url("../assets/images/wallpaper1.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	filter: blur(8px);
+	transform: scale(1.05);
+	z-index: 0;
 }
 
-.backgroundImage {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
+
+.heroContent {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	max-width: 1200px;
+	padding: 0 2rem;
+	gap: 4rem;
 }
 
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgba(18, 18, 18, 0.4),
-    rgba(18, 18, 18, 0.8)
-  );
-  backdrop-filter: blur(2px);
+
+.leftColumn {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start; 
+	text-align: left;
 }
 
-.presentationContainer {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  max-width: 1100px;
-  padding: 0 1.5rem; 
-  display: flex;
-  flex-direction: column; 
-  align-items: center;   
-  gap: 2rem;              
-}
-
-.textHome {
-  width: 100%;
-  text-align: center; 
-  padding: 0;         
-}
-
-.title {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: #fff;
-  line-height: 1.1;
-  animation: fadeUp 0.8s ease-out forwards;
-}
-
-.subtitle {
-  font-size: clamp(1rem, 2.5vw, 1.5rem);
-  color: #ccc;
-  margin-bottom: 1.5rem;
-  line-height: 1.4;
-  animation: fadeUp 0.8s ease-out 0.2s forwards;
-  opacity: 0;
-}
-
-.strongText {
-  color: #fff;
-  font-weight: 600;
+.mainTitle {
+	font-family: var(--font-heading);
+	font-size: clamp(2.5rem, 5vw, 4rem);
+	color: #ffffff;
+	margin-bottom: 1rem;
+	font-weight: 800;
 }
 
 .description {
-  font-size: 1rem;
-  color: #a0a0a0;
-  margin-bottom: 0.5rem;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-  animation: fadeUp 0.8s ease-out 0.3s forwards;
-  opacity: 0;
+	font-size: 1.25rem;
+	color: #ffffff;
+	margin-bottom: 2rem;
+	max-width: 500px;
 }
 
-.highlight {
-  color: #61dafb;
+.rightColumn {
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .profileImage {
-  width: 14rem;
-  height: auto;
-  border-radius: 50px;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
-  transition: width 0.3s ease;
-  animation: fadeUp 0.8s ease-out 0.3s forwards;
-  opacity: 0;
+	width: clamp(200px, 25vw, 320px);
+	height: clamp(200px, 25vw, 320px);
+	border-radius: 10%;
+	object-fit: cover;
+	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
-.iconContainer {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center; 
-  width: 100%;             
-  gap: 1.5rem;
-  
-  margin-top: 0.5rem;
-  padding: 0;             
-  
-  animation: fadeUp 0.8s ease-out 0.4s forwards;
-  opacity: 0;
+/* --- Icônes Sociales --- */
+.socialList {
+	display: flex;
+	justify-content: flex-start;
+	list-style: none;
+	padding: 0;
+	margin-bottom: 2rem;
+	gap: 1.5rem;
 }
 
 .myIcon {
-  width: 28px;
-  height: 28px;
-  stroke: #ffffff;
-  stroke-width: 2px;
-  transition: all 0.3s ease;
-  cursor: pointer;
+	display: inline-block; 
+	stroke: #ffffff; 
+	transition:
+		transform 0.3s ease,
+		stroke 0.3s ease;
 }
 
 .myIcon:hover {
-  stroke: #61dafb;
-  transform: translateY(-3px);
+	stroke: #61dafb;
+	transform: translateY(-3px);
 }
 
-.arrowButton {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 10;
-  animation: bounce 2s infinite;
+/* --- Bouton CV --- */
+.container {
+	display: flex;
+	justify-content: flex-start;
+	padding: 10px 0;
 }
 
-.arrow {
-  width: 32px;
-  height: 32px;
-  color: #e8e5e5;
-  transition: color 0.3s ease;
+.cvLink {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #ffffff;
+	color: #1a1a1a;
+	text-decoration: none;
+	padding: 12px 35px;
+	border-radius: 100px;
+	min-width: 260px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+	transition:
+		transform 0.3s ease,
+		background-color 0.3s ease,
+		box-shadow 0.3s ease;
 }
 
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.cvLink:hover {
+	background-color: #191818ee;
+  color: #ede5e5e1;
+	transform: translateY(-3px);
+	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
 }
 
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateX(-50%) translateY(0);
-  }
-  40% {
-    transform: translateX(-50%) translateY(-10px);
-  }
-  60% {
-    transform: translateX(-50%) translateY(-5px);
-  }
+.cvTextDesc {
+	margin: 0;
+	font-size: 1.25rem;
+	font-weight: 600;
+	letter-spacing: -0.5px;
+	font-family: sans-serif;
 }
 
-@media (min-width: 900px) {
-  .presentationContainer {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    grid-template-rows: auto auto; 
-    grid-template-areas:
-      "textZone imageZone"
-      "iconsZone imageZone"; 
-    align-items: center; 
-    gap: 1rem 2rem;      
-    text-align: left;
-  }
+/* --- Responsive (Mobile / Tablette) --- */
+@media (max-width: 900px) {
+	.heroContent {
+		flex-direction: column-reverse; /* Met la photo en haut et le texte en dessous */
+		text-align: center;
+		gap: 2rem;
+		padding-top: 4rem;
+	}
 
-  .profileImage {
-    grid-area: imageZone;
-    width: 20rem;
-    justify-self: center; 
-  }
+	.leftColumn {
+		align-items: center;
+		text-align: center;
+	}
 
-  .textHome {
-    grid-area: textZone;
-    text-align: left; 
-    align-self: end;  
-    padding-left: 10%; 
-  }
-
-  .description {
-    margin-left: 0;
-    margin-right: 0;
-    max-width: 90%; 
-  }
-
-  .iconContainer {
-    grid-area: iconsZone;
-    justify-content: flex-start; 
-    align-self: start;           
-    padding-left: 10%;
-    margin-top: 1rem;
-  }
+	.socialList, .container {
+		justify-content: center;
+	}
 }

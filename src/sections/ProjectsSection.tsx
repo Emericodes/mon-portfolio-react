@@ -4,122 +4,153 @@ import ReactOrganizer from "../assets/images/ReactOrganizer.png";
 import ReactEvil from "../assets/images/ReactEvil.png";
 import SoundWall from "../assets/images/SounWall.png";
 import PetitCahier from "../assets/images/PetitCahier.png";
+import ProjectsBackground from "../assets/images/white2.png";
+import { FolderGit2, ExternalLink, Play } from "lucide-react";
 import styles from "./ProjectsSection.module.css";
 
-const ProjectsSection = ({
-	onNavigate,
-}: {
-	onNavigate: (id: SectionId) => void;
-}) => {
-	return (
-		<section
-			id="projects"
-			className={styles.projectsSection}
-			aria-labelledby="projects-title"
-		>
-			<div className={styles.textprojects}>
-				<h2 id="projects-title">Bienvenue dans ma galerie de projets ! </h2>
+interface ProjectsSectionProps {
+  onNavigate: (id: SectionId) => void;
+}
 
-				<p>
-					J'ai déployé ces applications pour vous permettre de tester mes
-					compétences en React en conditions réelles.
-				</p>
-				<p>
-					Que vous soyez ici pour vous détendre ou pour vous organiser, j'ai ce
-					qu'il vous faut : Envie de frisson ?
-				</p>
+const ProjectsSection = ({ onNavigate }: ProjectsSectionProps) => {
+  return (
+    <section
+      id="projects"
+      className={styles.projectsSection}
+      aria-labelledby="projects-title"
+    >
+		  <div className={styles.backgroundContainer} aria-hidden="true">
+        <img
+          src={ProjectsBackground}
+          alt=""
+          className={styles.backgroundImage}
+          fetchPriority="high"
+        />
+        <div className={styles.overlay} />
+      </div>
+      <div className={styles.bentoGrid}>
+        
+        <div className={`${styles.bentoCard} ${styles.introCard}`}>
+          <div className={styles.titleWithIcon}>
+            <FolderGit2 size={28} className={styles.cardIcon} />
+            <h2 id="projects-title" className={styles.sectionTitle}>
+              Galerie Projets
+            </h2>
+          </div>
+          <h3 className={styles.subtitle}>Applications Live</h3>
+          <p className={styles.introText}>
+            J'ai déployé ces applications pour vous permettre de tester mes compétences en <strong className={styles.bold}>React</strong> et intégrations en conditions réelles.
+          </p>
+          <p className={styles.introText}>
+            Que vous soyez ici pour vous détendre ou pour vous organiser, plongez dans l'univers de chaque projet.
+          </p>
+          <div className={styles.tipBadge}>
+            <span className={styles.bold}>Astuce :</span> Cliquez directement sur l'image ou l'icône pour explorer l'application.
+          </div>
+        </div>
 
-				<p>
-					Plongez dans notre project collaboratif{" "}
-					<strong className={styles.bold}>React Evil</strong> et amusez-vous à
-					découvrir cette aventure.
-				</p>
-				<p>
-					Besoin d'ordre ? Planifiez vos prochaines tâches de la journée avec{" "}
-					<strong className={styles.bold}>mon Organisateur </strong>& Post-its,
-					conçu pour optimiser votre quotidien.{" "}
-				</p>
-				<p>
-					<strong className={styles.bold}>Cliquer</strong> sur la carte du
-					projet pour le consulter.
-				</p>
+        {/* PROJET 1 : React Evil */}
+        <div className={styles.bentoCard}>
+          <div className={styles.projectHeader}>
+            <h4>ReactEvil</h4>
+            <a
+              href="https://react-evil-three.vercel.app/"
+              target="_blank"
+              rel="noreferrer"
+              className={styles.projectActionLink}
+              aria-label="Ouvrir le projet ReactEvil dans un nouvel onglet"
+            >
+              <ExternalLink size={18} />
+            </a>
+          </div>
+          <p className={styles.projectDescription}>Projet collaboratif et aventure interactive immersive.</p>
+          <a
+            href="https://react-evil-three.vercel.app/"
+            target="_blank"
+            rel="noreferrer"
+            className={styles.imageWrapper}
+          >
+            <img src={ReactEvil} alt="Aperçu ReactEvil" className={styles.projectImage} loading="lazy" />
+          </a>
+        </div>
 
-				<p>Bonne visite et bonne exploration !</p>
-			</div>
-			<ul className={styles.cardsProjects}>
-				<li>
-					<h4>ReactEvil</h4>
-					<a
-						href="https://react-evil-three.vercel.app/"
-						target="_blank"
-						rel="noreferrer"
-						className={styles.projectsLink}
-						aria-label="Ouvrir le projet ReactEvil dans un nouvel onglet"
-					>
-						<img
-							src={ReactEvil}
-							alt="Aperçu du projet ReactEvil"
-							className={styles.projectsImage}
-							loading="lazy"
-						/>
-					</a>
-				</li>
-				<li>
-					<h4>Mon Organisateur React</h4>
-					<a
-						href="https://react-organizer.vercel.app/"
-						target="_blank"
-						rel="noreferrer"
-						className={styles.projectsLink}
-						aria-label="Ouvrir le projet Mon Organisateur React dans un nouvel onglet"
-					>
-						<img
-							src={ReactOrganizer}
-							alt="Aperçu du projet Mon Organisateur React"
-							className={styles.projectsImage}
-							loading="lazy"
-						/>
-					</a>
-				</li>
-				<li>
-					<h4>Sound Wall </h4>
+        {/* PROJET 2 : Mon Organisateur React */}
+        <div className={styles.bentoCard}>
+          <div className={styles.projectHeader}>
+            <h4>Mon Organisateur</h4>
+            <a
+              href="https://react-organizer.vercel.app/"
+              target="_blank"
+              rel="noreferrer"
+              className={styles.projectActionLink}
+              aria-label="Ouvrir le projet Mon Organisateur React dans un nouvel onglet"
+            >
+              <ExternalLink size={18} />
+            </a>
+          </div>
+          <p className={styles.projectDescription}>Gestionnaire de tâches quotidien optimisé avec Post-its.</p>
+          <a
+            href="https://react-organizer.vercel.app/"
+            target="_blank"
+            rel="noreferrer"
+            className={styles.imageWrapper}
+          >
+            <img src={ReactOrganizer} alt="Aperçu Organisateur React" className={styles.projectImage} loading="lazy" />
+          </a>
+        </div>
 
-					<button
-						type="button"
-						className={styles.projectsButton}
-						onClick={() => onNavigate("soundwall")}
-						aria-label="Aller à la section SoundWall"
-					>
-						<img
-							src={SoundWall}
-							alt="Aperçu du projet SoundWall"
-							className={styles.projectsImage}
-							loading="lazy"
-						/>
-					</button>
-				</li>
-				<li>
-					<h4>Le Petit Cahier</h4>
-					
-						<a
-						href="https://ptit-cahier.fr"
-						target="_blank"
-						rel="noreferrer"
-						className={styles.projectsLink}
-						aria-label="Ouvrir le projet Mon Organisateur React dans un nouvel onglet"
-					>
-						<img
-						src={PetitCahier}
-						alt="Aperçu du projet Le Petit Cahier"
-						className={styles.projectsImage}
-						loading="lazy"
-					/>
-					</a>
-				</li>
-			</ul>
-			<ScrollArrow target="contact" onNavigate={onNavigate} />
-		</section>
-	);
+        {/* PROJET 3 : Sound Wall (Navigation interne) */}
+        <div className={styles.bentoCard}>
+          <div className={styles.projectHeader}>
+            <h4>Sound Wall</h4>
+            <button
+              type="button"
+              className={styles.projectActionButton}
+              onClick={() => onNavigate("soundwall")}
+              aria-label="Aller à la section SoundWall"
+            >
+              <Play size={16} fill="currentColor" />
+            </button>
+          </div>
+          <p className={styles.projectDescription}>Expérience et mur sonore interactif.</p>
+          <button
+            type="button"
+            className={styles.imageButtonWrapper}
+            onClick={() => onNavigate("soundwall")}
+          >
+            <img src={SoundWall} alt="Aperçu SoundWall" className={styles.projectImage} loading="lazy" />
+          </button>
+        </div>
+
+        {/* PROJET 4 : Le Petit Cahier */}
+        <div className={styles.bentoCard}>
+          <div className={styles.projectHeader}>
+            <h4>Le Petit Cahier</h4>
+            <a
+              href="https://ptit-cahier.fr"
+              target="_blank"
+              rel="noreferrer"
+              className={styles.projectActionLink}
+              aria-label="Ouvrir le projet Le Petit Cahier dans un nouvel onglet"
+            >
+              <ExternalLink size={18} />
+            </a>
+          </div>
+          <p className={styles.projectDescription}>Plateforme web sur-mesure et vitrine interactive.</p>
+          <a
+            href="https://ptit-cahier.fr"
+            target="_blank"
+            rel="noreferrer"
+            className={styles.imageWrapper}
+          >
+            <img src={PetitCahier} alt="Aperçu Le Petit Cahier" className={styles.projectImage} loading="lazy" />
+          </a>
+        </div>
+
+      </div>
+      <ScrollArrow target="contact" onNavigate={onNavigate} />
+    </section>
+  );
 };
 
 export default ProjectsSection;

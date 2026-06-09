@@ -1,87 +1,85 @@
-import { ChevronDown, Github, Linkedin, Mail } from "lucide-react";
-import Homebackground from "../assets/images/background_home.png";
-import Profil from "../assets/images/profil.png";
-import type { SectionId } from "../components/Header";
-import styles from "./HomeSection.module.css";
+import { Github, Linkedin, Mail } from 'lucide-react';
+import styles from './HomeSection.module.css';
 
-const HomeSection = ({
-	onNavigate,
-}: {
-	onNavigate: (id: SectionId) => void;
-}) => {
-	return (
-		<section id="home" className={styles.homeSection}>
-			<div className={styles.backgroundHome}>
-				<img
-					src={Homebackground}
-					alt="Décoration d'ambiance"
-					className={styles.backgroundImage}
-					fetchPriority="high"
-				/>
-				<div className={styles.overlay}></div>
-			</div>
+import Profil from '../../src/assets/images/profil.png'; 
+import cvPdf from '../../src/assets/docs/Mouillat_Emeric_CV.pdf';
+import ScrollArrow from '../components/ScrollArrow';
+import type { SectionId } from '../components/Header';
 
-			<div className={styles.presentationContainer}>
-				<div className={styles.textHome}>
-					<h1 className={styles.title}>
-						Bienvenue <span className={styles.highlight}>sur mon site</span>
-					</h1>
-					<h2 className={styles.subtitle}>
-						Développeur Web Fullstack Junior. <br />
-						<strong className={styles.strongText}>
-							Opérationnel aujourd'hui, à la recherche d'une expérience professionnelle.
-						</strong>
-					</h2>
+interface HomeSectionProps {
+  onNavigate: (id: SectionId) => void;
+}
 
-					<p className={styles.description}>
-						Je construis des projets pour transformer mes connaissances en
-						expériences concrètes.
-					</p>
-					<p className={styles.description}>
-						Curieux et motivé, je cherche l'équipe qui me permettra de grandir
-						tout en apportant ma pierre à l'édifice.
-					</p>
-				</div>
+const HomeSection = ({ onNavigate }: HomeSectionProps) => {
+  return (
+    <section id="home" className={styles.heroSection}>
+      <div className={styles.backgroundContainer} aria-hidden="true" />
 
-				<img
-					src={Profil}
-					alt="Portrait d'Emeric"
-					className={styles.profileImage}
-					fetchPriority="high"
-				/>
+      <div className={styles.heroContent}>
+        
+        
+        <div className={styles.leftColumn}>
+          <h1 className={styles.mainTitle}>Emeric Mouillat</h1>
+		  <h2 className={styles.secondTitle}>Developpeur Full Stack</h2>
 
-				<div className={styles.iconContainer}>
-					<a
-						href="https://github.com/Emericodes"
-						target="_blank"
-						rel="noreferrer"
-						aria-label="Voir mon profil GitHub"
-					>
-						<Github className={styles.myIcon} aria-hidden="true" />
-					</a>
-					<a
-						href="https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile"
-						target="_blank"
-						rel="noreferrer"
-						aria-label="Voir mon profil LinkedIn"
-					>
-						<Linkedin className={styles.myIcon} aria-hidden="true" />
-					</a>
-					<a href="mailto:pro.emeric.m@gmail.com" aria-label="M'envoyer un email">
-						<Mail className={styles.myIcon} aria-hidden="true" />
-					</a>
-				</div>
-			</div>
-			<button
-				type="button"
-				className={styles.arrowButton}
-				onClick={() => onNavigate("about")}
-				aria-label="Aller à la section À propos"
-			>
-				<ChevronDown className={styles.arrow} aria-hidden="true" />
-			</button>
-		</section>
-	);
+          <ul className={styles.socialList}>
+            <li className={styles.socialItem}>
+              <a
+                href="https://github.com/Emericodes"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Voir mon profil GitHub"
+              >
+                <Github className={styles.myIcon} aria-hidden="true" />
+              </a>
+            </li>
+            <li className={styles.socialItem}>
+              <a
+                href="https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Voir mon profil LinkedIn"
+              >
+                <Linkedin className={styles.myIcon} aria-hidden="true" />
+              </a>
+            </li>
+            <li className={styles.socialItem}>
+              <a
+                href="mailto:pro.emeric.m@gmail.com"
+                aria-label="M'envoyer un email"
+              >
+                <Mail className={styles.myIcon} aria-hidden="true" />
+              </a>
+            </li>
+          </ul>
+
+          <div className={styles.container}>
+            <a
+              href={cvPdf}
+              target="_blank"
+              rel="noreferrer"
+              className={styles.cvLink}
+              aria-label="Télécharger mon CV complet au format PDF (ouvre un nouvel onglet)"
+            >
+              <span className={styles.cvTextDesc}>Télécharger mon CV</span>
+            </a>
+          </div>
+        </div>
+
+        <div className={styles.rightColumn}>
+          <img
+            src={Profil}
+            alt="Portrait d'Emeric"
+            className={styles.profileImage}
+            fetchPriority="high"
+          />
+        </div>
+
+      </div>
+
+      <ScrollArrow target="about" onNavigate={onNavigate} />
+    </section>
+  );
 };
 
 export default HomeSection;

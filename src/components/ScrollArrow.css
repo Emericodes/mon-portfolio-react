@@ -13,7 +13,7 @@
 .chevron {
     width: 48px;        
     height: 48px;
-    color: #121212;     
+    color: #f804046b;     
     transition: color 0.3s ease;
 }
 .chevron:hover {

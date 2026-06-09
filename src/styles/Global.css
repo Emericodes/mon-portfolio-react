@@ -27,7 +27,7 @@
   --color-accent: #0027a8;
   --color-accent-light: #6366f1;
   --color-btn-bg: rgba(1, 2, 65, 0.58);
-  --color-btn-bg-hover: #e1e1e1;
+  --color-btn-bg-hover: #ecd9d9d0;
   --font-heading: "Poppins", "Arial", sans-serif;
   --font-body: "Inter", "Helvetica", sans-serif;
   --font-size-h1: 2.5rem;
@@ -74,19 +74,21 @@ p {
   margin-bottom: 1rem;
 }
 
-main section {
-  min-height: 100vh;
-  width: 100%;
-  scroll-snap-align: start;
-  scroll-margin-top: var(--header-height);
-}
-
 main {
   height: 100vh; 
   width: 100%;
   overflow-y: scroll; 
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
+  scroll-padding-top: 0; 
+}
+
+main section {
+  min-height: 100vh;
+  width: 100%;
+  scroll-snap-align: start;
+  scroll-margin-top: 0; 
+  padding-top: var(--header-height); 
 }
 
 @media (max-width: 768px), (max-height: 720px) {
